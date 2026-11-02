@@ -1,0 +1,19 @@
+/* Restaurant: warm embers, candle glow, curtain image reveals */
+.fxs-embers{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.fxs-embers i{position:absolute;bottom:-12px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(#ffd9a0,#e0944a 55%,transparent 72%);opacity:0;animation:fxsRise var(--t) ease-in var(--d) infinite}
+@keyframes fxsRise{0%{opacity:0;transform:translate3d(0,0,0)}12%{opacity:.85}100%{opacity:0;transform:translate3d(var(--dx),-78vh,0)}}
+.fxs-glow{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(55% 45% at 22% 100%,#e0944a40,transparent 70%),radial-gradient(40% 40% at 85% 100%,#c9703a2e,transparent 70%);mix-blend-mode:screen;animation:fxsGlow 7s ease-in-out infinite alternate}
+@keyframes fxsGlow{from{opacity:.55}to{opacity:1}}
+.fxs-cur{position:relative;overflow:hidden}
+.fxs-cover{position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,#3a2616,#7a4a24);transform-origin:right center;transition:transform 1.2s cubic-bezier(.7,0,.2,1) var(--dl,0s);pointer-events:none}
+.fxs-cur.in .fxs-cover{transform:scaleX(0)}
+.fxs-cur img{transform:scale(1.14);transition:transform 2s cubic-bezier(.2,.7,.2,1) var(--dl,0s)}.fxs-cur.in img{transform:scale(1)}
+.fxs-room{padding:clamp(70px,9vw,120px) 7%;background:#1b140e;color:#f3e9d8}
+.fxs-room h2{font:500 clamp(40px,5.4vw,74px)/1.04 var(--serif,serif);letter-spacing:-.04em;margin:0 0 14px}.fxs-room>p{max-width:420px;line-height:1.8;color:#cdb99c;margin:0 0 46px}
+.fxs-grid{display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:repeat(2,minmax(220px,26vw));grid-auto-rows:minmax(200px,18vw);gap:16px}.fxs-grid figure{margin:0;position:relative;background:#2b1f15}
+.fxs-grid figure:first-child{grid-row:span 2}.fxs-grid figure:nth-child(4){grid-column:1/-1}.fxs-grid img{width:100%;height:100%;object-fit:cover;display:block}
+.fxs-grid figcaption{position:absolute;left:18px;bottom:16px;z-index:4;font:italic 500 20px var(--serif,serif);text-shadow:0 2px 14px #000}
+.fxs-grid figure::before{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,#150e08cc);z-index:2}
+.fxs-grid figure.fx-broken{background:linear-gradient(135deg,#3a2616,#6b4426)}.fxs-grid figure.fx-broken img{opacity:0}
+@media(max-width:700px){.fxs-grid{grid-template-columns:1fr;grid-template-rows:none}.fxs-grid figure,.fxs-grid figure:first-child,.fxs-grid figure:nth-child(4){grid-row:auto;grid-column:auto;aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){.fxs-embers{display:none}.fxs-glow{animation:none}.fxs-cover{display:none}}
